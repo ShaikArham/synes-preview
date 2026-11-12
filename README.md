@@ -55,3 +55,9 @@ The original project documentation follows below, including exact commands, metr
 ## Detailed project documentation
 
 Static SYNES concept preview. See the main SYNES repository for implementation details and limitations.
+
+## Independent project and originality
+
+SYNES is an independent educational workflow operations and incident investigation project. It is **not affiliated with, endorsed by, or sponsored by Tines**. All scenarios and data are synthetic. SYNES uses its own branding, Lavender Cloud theme, and independently developed interface; it does not claim to be a Tines product or live integration.
+
+See [Independence and original-work guidelines](INDEPENDENCE_AND_ORIGINALITY.md) for design, code, branding, asset and publishing boundaries. This disclaimer does not guarantee freedom from legal claims.
