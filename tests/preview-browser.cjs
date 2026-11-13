@@ -43,6 +43,14 @@ for(const width of [320,390,768,1440]){
  assert.deepEqual(errors,[]);assert.deepEqual(requests,[],'unexpected external request');
  await page.goto('http://127.0.0.1:18789/lab.html');
  await page.getByText(/Investigate synthetic HTTP failures/i).first().waitFor();
+ await page.locator('[data-create-incident="401"]').click();
+ const labCase=page.locator('article.card').filter({hasText:/HTTP 401/}).last();
+ await labCase.locator('input[name="reviewer"]').fill('Demo reviewer');
+ await labCase.locator('input[name="reason"]').fill('Synthetic evidence reviewed and remediation approved');
+ await labCase.locator('button[value="approve"]').click();
+ const approvedCase=page.locator('article.card').filter({hasText:/HTTP 401/}).last();
+ await approvedCase.locator('[data-verify-incident]').click();
+ assert.match(await page.locator('article.card').filter({hasText:/HTTP 401/}).last().innerText(),/Recovered/);
  assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2),false,'lab overflow at '+width);
  assert.deepEqual(errors,[],'lab JavaScript errors');
  assert.deepEqual(requests,[],'no external requests in Overview or Operations Lab');
