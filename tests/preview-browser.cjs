@@ -34,6 +34,10 @@ for(const width of [320,390,768,1440]){
  assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2),false,'overflow at '+width);
  if(width<=720){await page.locator('#menu').click();assert.equal(await page.locator('#menu').getAttribute('aria-expanded'),'true');await page.keyboard.press('Escape');assert.equal(await page.locator('#menu').getAttribute('aria-expanded'),'false')}
  assert.deepEqual(errors,[]);assert.deepEqual(requests,[],'unexpected external request');
- console.log('PASS '+width);await ctx.close();
+ await page.goto('http://127.0.0.1:18789/lab.html');
+ await page.getByText(/Investigate synthetic HTTP failures/i).first().waitFor();
+ assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2),false,'lab overflow at '+width);
+ assert.deepEqual(errors,[],'lab JavaScript errors');
+ console.log('PASS overview and lab '+width);await ctx.close();
 }
 }finally{await browser.close()}})().catch(e=>{console.error(e);process.exitCode=1}).finally(()=>server.kill());
