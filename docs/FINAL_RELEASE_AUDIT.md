@@ -38,3 +38,8 @@ Public URL: https://synes-hybrid-overview-preview.vercel.app
 Preview branch: work/hybrid-overview-preview
 Private branch: work/hybrid-overview
 \n## Phase 2 source audit observations\n- Private web/3b.html: 49,603 characters; source contains Monitoring, Governance, Activity, Audit and investigation UI references. Presence does not prove functional browser QA.\n- Private web/composer.html: 3,068 characters, a separate Message to Workflow Studio entry page; associated script dependencies need review.\n- Private synes/server.py: serves /overview, /3b, /composer, /health, and synthetic incident routes; mutable incident API is unauthenticated. Do not deploy this server publicly.\n- Public preview: interactive browser-only lifecycle, not a live private backend connection.\n
+## Verification checkpoint — 2026-11-13
+- Vercel deployment `dpl_H3czy1yCSNoCSBhhLPFErVbzrk8p` returned READY with production alias `synes-hybrid-overview-preview.vercel.app`.
+- Source assertions passed: Overview guided start button and handler, diagnose/approve/reject/verify controls, standalone Operations Lab, no `fetch(` call in Lab, four viewport widths, 429 scenario and browser reset test.
+- These are source inspections only, **not** executed Playwright/browser QA. The GitHub workflow-run lookup available here filters to pull-request-triggered runs and returning an empty list does **not** prove that push-triggered CI did not run.
+- Release remains gated on actual CI job results, browser interactions, and recorded demo evidence.
