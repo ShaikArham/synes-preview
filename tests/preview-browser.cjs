@@ -21,7 +21,7 @@ for(const width of [320,390,768,1440]){
  await page.locator('#verify').click();await page.locator('#api-message').getByText(/verify recorded/).waitFor();
  assert.match(await page.locator('#incident-status').innerText(),/Recovery verified/);
  await page.locator('[data-scenario="422"]').click();await page.locator('#queue-count').getByText(/5 simulated incidents/).waitFor();
- await page.locator('#diagnose').click();await page.getByText(/diagnose recorded/).first().waitFor();
+ await page.locator('#diagnose').click();await page.locator('#api-message').getByText(/diagnose recorded/).waitFor();
  await page.locator('#reject').click();await page.locator('#api-message').getByText(/reject recorded/).waitFor();
  assert.equal(await page.locator('#verify').isDisabled(),true);
  assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2),false,'overflow at '+width);
