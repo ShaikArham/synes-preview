@@ -29,7 +29,7 @@ Scope: Public browser-only preview and private SYNES application. This is a veri
 ## Phase 4: Release
 - [ ] CI passing on relevant branches.
 - [ ] Deployment live verified independently.
-- [ ] README and 60-second demonstration.
+- [x] README updated with live Overview/Operations Lab, guided reviewer walkthrough and honest security/QA limitations.\n- [ ] Capture actual 60-second demo video; current walkthrough is interactive, not a recorded film.
 - [ ] PR review and safe merge decision by owner; never merge main automatically.
 - [ ] Final evidence-based readiness score.
 
