@@ -8,6 +8,13 @@ fs.mkdirSync(artifactDir,{recursive:true});
 const http=require('node:http');
 const server=spawn('python3',['-m','http.server','18789','--bind','127.0.0.1'],{stdio:'ignore',cwd:path.resolve(__dirname,'..')});
 const base='http://127.0.0.1:18789/overview.html';
+async function labNavigate(page,width,section){
+ if(width<=600){
+  const menu=page.locator('#menu');
+  if(await menu.getAttribute('aria-expanded')!=='true')await menu.click();
+ }
+ await labNavigate(page,width,section);
+}
 async function ready(){for(let n=0;n<50;n++){try{await new Promise((yes,no)=>http.get(base,r=>{r.resume();r.statusCode===200?yes():no(Error('HTTP '+r.statusCode))}).on('error',no));return}catch{await new Promise(r=>setTimeout(r,100))}}throw Error('Static preview not served')}
 (async()=>{await ready();const browser=await chromium.launch({headless:true});try{
 for(const width of [320,390,768,1440]){
@@ -42,7 +49,7 @@ for(const width of [320,390,768,1440]){
  if(width<=720){await page.locator('#menu').click();assert.equal(await page.locator('#menu').getAttribute('aria-expanded'),'true');await page.keyboard.press('Escape');assert.equal(await page.locator('#menu').getAttribute('aria-expanded'),'false')}
  assert.deepEqual(errors,[]);assert.deepEqual(requests,[],'unexpected external request');
  await page.goto('http://127.0.0.1:18789/lab.html');
- await page.locator('[data-page="Incidents"]').click();
+ await labNavigate(page,width,'Incidents');
  await page.getByText(/Investigate synthetic HTTP failures/i).first().waitFor();
  await page.locator('[data-create-incident="401"]').click();
  const labCase=page.locator('article.card').filter({hasText:/HTTP 401/}).last();
