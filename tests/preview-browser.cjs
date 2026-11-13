@@ -42,6 +42,7 @@ for(const width of [320,390,768,1440]){
  if(width<=720){await page.locator('#menu').click();assert.equal(await page.locator('#menu').getAttribute('aria-expanded'),'true');await page.keyboard.press('Escape');assert.equal(await page.locator('#menu').getAttribute('aria-expanded'),'false')}
  assert.deepEqual(errors,[]);assert.deepEqual(requests,[],'unexpected external request');
  await page.goto('http://127.0.0.1:18789/lab.html');
+ await page.locator('[data-page="Incidents"]').click();
  await page.getByText(/Investigate synthetic HTTP failures/i).first().waitFor();
  await page.locator('[data-create-incident="401"]').click();
  const labCase=page.locator('article.card').filter({hasText:/HTTP 401/}).last();
@@ -51,6 +52,16 @@ for(const width of [320,390,768,1440]){
  const approvedCase=page.locator('article.card').filter({hasText:/HTTP 401/}).last();
  await approvedCase.locator('[data-verify-incident]').click();
  assert.match(await page.locator('article.card').filter({hasText:/HTTP 401/}).last().innerText(),/Recovered/);
+ await page.locator('[data-create-incident="422"]').click();
+ const rejectedCase=page.locator('article.card').filter({hasText:/HTTP 422/}).last();
+ await rejectedCase.locator('input[name="reviewer"]').fill('Demo reviewer');
+ await rejectedCase.locator('input[name="reason"]').fill('Missing validation evidence; recovery denied');
+ await rejectedCase.locator('button[value="reject"]').click();
+ assert.equal(await page.locator('article.card').filter({hasText:/HTTP 422/}).last().locator('[data-verify-incident]').count(),0,'rejected case cannot verify');
+ for(const section of ['Monitoring','Access','Activity','Workflows']){
+  await page.locator('[data-page="'+section+'"]').click();
+  assert.equal(await page.locator('#view h1').count(),1,section+' must render a heading');
+ }
  assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2),false,'lab overflow at '+width);
  assert.deepEqual(errors,[],'lab JavaScript errors');
  assert.deepEqual(requests,[],'no external requests in Overview or Operations Lab');
