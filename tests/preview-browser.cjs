@@ -11,6 +11,8 @@ for(const width of [320,390,768,1440]){
  const ctx=await browser.newContext({viewport:{width,height:850}}),page=await ctx.newPage(),errors=[],requests=[];
  page.on('pageerror',e=>errors.push(e.message));page.on('request',r=>{if(!r.url().startsWith('http://127.0.0.1:18789/'))requests.push(r.url())});
  await page.goto(base);await page.getByText(/Browser-only synthetic simulation/).first().waitFor();
+ assert.equal(await page.locator('a[href="/lab.html"]').count(),1,'Overview must link to Operations Lab');
+ assert.equal(await page.locator('#start-tour').isVisible(),true,'guided walkthrough must be visible');
  assert.equal(await page.locator('[data-incident]').count(),3);
  await page.locator('#start-tour').click();await page.waitForFunction(()=>/4 simulated incidents/.test(document.querySelector('#queue-count')?.textContent||''));
  assert.equal(await page.locator('[data-incident]').count(),4);
@@ -39,6 +41,7 @@ for(const width of [320,390,768,1440]){
  await page.getByText(/Investigate synthetic HTTP failures/i).first().waitFor();
  assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2),false,'lab overflow at '+width);
  assert.deepEqual(errors,[],'lab JavaScript errors');
+ assert.deepEqual(requests,[],'no external requests in Overview or Operations Lab');
  await page.goto(base);
  assert.equal(await page.locator('[data-incident]').count(),3,'browser-only simulation should reset on reload');
  console.log('PASS overview and lab '+width);await ctx.close();
