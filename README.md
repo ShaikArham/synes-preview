@@ -4,9 +4,9 @@
 
 ### A SUPPORT INVESTIGATION, NOT A BLACK BOX.
 
-**A static public preview of the SYNES synthetic incident-investigation concept.**
+**An interactive, browser-only synthetic incident-investigation preview with a standalone Operations Lab.**
 
-[**Explore the demo**](https://shaikarham.github.io/synes-preview/) · [**Source repository**](https://github.com/ShaikArham/synes-preview) · [**Arham's portfolio**](https://arham-bi.vercel.app/)
+[**Explore the live Overview**](https://synes-hybrid-overview-preview.vercel.app/) · [**Operations Lab**](https://synes-hybrid-overview-preview.vercel.app/lab.html) · [**Source repository**](https://github.com/ShaikArham/synes-preview) · [**Arham's portfolio**](https://arham-bi.vercel.app/)
 
 ![Project](https://img.shields.io/badge/Portfolio-Independent%20project-075d60?style=flat-square) ![Evidence](https://img.shields.io/badge/Approach-Evidence%20first-334155?style=flat-square)
 
@@ -31,13 +31,13 @@ The preview illustrates evidence gathering, diagnosis, approval and recovery ver
 | Reviewer's lens | What to look for |
 | :--- | :--- |
 | **Product thinking** | The operational question and intended user journey |
-| **Engineering** | Static HTML and GitHub Pages publication. |
+| **Engineering** | Static HTML/JavaScript deployed on Vercel; synthetic state is browser-only. |
 | **Evidence** | Reproducible examples, explicit rules and documented boundaries |
 | **Trust** | A preview is not a connected Tines account, production service or proof of live API-backed recovery. |
 
 ## 03 / FIVE-MINUTE REVIEW
 
-Explore the static preview, then review the main SYNES project for the local incident engine and testable workflow.
+Open the live Overview, select **Start guided incident**, diagnose the synthetic HTTP 401, approve the simulated remediation and verify the simulated recovery. Then explore the separate Operations Lab. Refreshing resets the Overview simulator. Review the private main SYNES project for its local incident engine and testable workflow.
 
 ## 04 / WHAT IT DEMONSTRATES
 
@@ -54,7 +54,7 @@ The original project documentation follows below, including exact commands, metr
 
 ## Detailed project documentation
 
-Static SYNES concept preview. See the main SYNES repository for implementation details and limitations.
+Public Vercel preview: browser-only synthetic incident simulation and standalone Operations Lab. No connected Tines tenant, live backend, production recovery, or customer data. The local Python incident API in the private SYNES application is unauthenticated and must not be publicly exposed. Browser CI and end-to-end functional verification are outstanding; deployment READY alone does not establish passing QA. See [final release audit](docs/FINAL_RELEASE_AUDIT.md) for the verification ledger.
 
 ## Independent project and originality
 
