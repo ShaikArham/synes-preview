@@ -2,6 +2,9 @@ const {chromium}=require('playwright');
 const assert=require('node:assert/strict');
 const {spawn}=require('node:child_process');
 const path=require('node:path');
+const fs=require('node:fs');
+const artifactDir=path.resolve(__dirname,'../artifacts/browser-qa');
+fs.mkdirSync(artifactDir,{recursive:true});
 const http=require('node:http');
 const server=spawn('python3',['-m','http.server','18789','--bind','127.0.0.1'],{stdio:'ignore',cwd:path.resolve(__dirname,'..')});
 const base='http://127.0.0.1:18789/overview.html';
@@ -10,6 +13,7 @@ async function ready(){for(let n=0;n<50;n++){try{await new Promise((yes,no)=>htt
 for(const width of [320,390,768,1440]){
  const ctx=await browser.newContext({viewport:{width,height:850}}),page=await ctx.newPage(),errors=[],requests=[];
  page.on('pageerror',e=>errors.push(e.message));page.on('request',r=>{if(!r.url().startsWith('http://127.0.0.1:18789/'))requests.push(r.url())});
+ try {
  await page.goto(base);await page.getByText(/Browser-only synthetic simulation/).first().waitFor();
  assert.equal(await page.locator('a[href="/lab.html"]').count(),1,'Overview must link to Operations Lab');
  assert.equal(await page.locator('#start-tour').isVisible(),true,'guided walkthrough must be visible');
@@ -44,6 +48,12 @@ for(const width of [320,390,768,1440]){
  assert.deepEqual(requests,[],'no external requests in Overview or Operations Lab');
  await page.goto(base);
  assert.equal(await page.locator('[data-incident]').count(),3,'browser-only simulation should reset on reload');
- console.log('PASS overview and lab '+width);await ctx.close();
+ console.log('PASS overview and lab '+width);
+ } catch(error) {
+  const name='viewport-'+width;
+  try {await page.screenshot({path:path.join(artifactDir,name+'.png'),fullPage:true});} catch (_) {}
+  fs.writeFileSync(path.join(artifactDir,name+'.txt'),String(error.stack||error)+'\nPage: '+page.url()+'\nErrors: '+errors.join(' | ')+'\nRequests: '+requests.join(' | '));
+  throw error;
+ } finally {await ctx.close()}
 }
 }finally{await browser.close()}})().catch(e=>{console.error(e);process.exitCode=1}).finally(()=>server.kill());
