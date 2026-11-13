@@ -15,9 +15,9 @@ Scope: Public browser-only preview and private SYNES application. This is a veri
 - [x] Overview synthetic incident list, metrics, evidence/decision/verification tabs present in public preview.
 - [x] Browser-only incident creation and lifecycle guarded by diagnosis, human approval, verification.
 - [x] No real Tines connection or production recovery claimed.
-- [ ] Verify private Investigations, Monitoring, Access & Governance, Activity & Audit, Workflow Composer against branch/PR source and end-to-end tests.
-- [ ] Confirm private backend routes are not publicly exposed without authentication and isolation.
-- [ ] Review all public navigation links and avoid dead ends.
+- [x] Source inspected: private web/3b.html contains investigations, monitoring, access/governance and activity/audit terminology and UI code; this is source presence, not functional verification.\n- [x] Source inspected: private web/composer.html exists as a separate Composer UI; functionality remains unverified.\n- [ ] Run module-level browser interactions and confirm correct data/state transitions for every private module.
+- [x] Private synes/server.py inspected: POST /api/simulate and /api/incidents/{id}/diagnose|approve|verify|customer-update have no authentication; backend must remain local/private until access controls and isolation are added.
+- [x] Public preview's misleading Operations Lab link replaced with an in-page workspace link.\n- [ ] Compare private and public experiences; public preview does not include the full private Operations Lab or Composer.
 
 ## Phase 3: Hiring manager review
 - [ ] First-visit walkthrough: 401 -> diagnose -> approve -> verify.
@@ -37,3 +37,4 @@ Scope: Public browser-only preview and private SYNES application. This is a veri
 Public URL: https://synes-hybrid-overview-preview.vercel.app
 Preview branch: work/hybrid-overview-preview
 Private branch: work/hybrid-overview
+\n## Phase 2 source audit observations\n- Private web/3b.html: 49,603 characters; source contains Monitoring, Governance, Activity, Audit and investigation UI references. Presence does not prove functional browser QA.\n- Private web/composer.html: 3,068 characters, a separate Message to Workflow Studio entry page; associated script dependencies need review.\n- Private synes/server.py: serves /overview, /3b, /composer, /health, and synthetic incident routes; mutable incident API is unauthenticated. Do not deploy this server publicly.\n- Public preview: interactive browser-only lifecycle, not a live private backend connection.\n
