@@ -18,3 +18,11 @@ jobs:
       - run: npx playwright install --with-deps chromium
       - name: Browser simulation at four viewport widths
         run: node tests/preview-browser.cjs
+      - name: Upload browser QA evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: synes-preview-browser-qa
+          path: artifacts/browser-qa/
+          if-no-files-found: ignore
+          retention-days: 14
