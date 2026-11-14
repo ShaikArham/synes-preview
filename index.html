@@ -46,16 +46,214 @@ header{background:#F8F5FFed;border-color:var(--mist);box-shadow:0 6px 24px #4727
 .operations-frame iframe{display:block;width:100%;height:730px;border:0;background:#F8F5FF}
 .operations-status{margin:14px 0;color:#47277D;font-weight:650}
 @media(max-width:700px){.operations-chapter{padding:55px 0}.operations-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.operations-frame iframe{height:670px}}
+
+/* Full-size in-page workflow studio */
+.studio-wide>.wrap{max-width:1600px;width:100%;padding-inline:clamp(12px,2vw,36px)}
+.studio-wide .studio-intro{max-width:960px}
+.studio-wide .studio-frame{border-radius:22px;box-shadow:0 24px 70px #47277D24}
+.studio-wide .studio-frame iframe{height:clamp(760px,88vh,1100px);min-height:760px;background:#F8F5FF}
+@media(max-width:850px){.studio-wide .studio-frame iframe{height:1180px;min-height:1180px}.studio-wide>.wrap{padding-inline:12px}}
+@media(max-width:620px){.studio-wide .studio-frame iframe{height:1400px;min-height:1400px}.studio-wide .studio-caption{padding:12px}}
+
+/* Final product-story layer */
+:root{scroll-behavior:smooth;scroll-padding-top:92px}
+html{scroll-behavior:smooth}
+body{overflow-x:hidden}
+header{transition:box-shadow .25s ease,background .25s ease}
+header.is-scrolled{box-shadow:0 10px 34px #47277d18}
+.bar{max-width:1440px}
+.navlinks{gap:clamp(10px,1.6vw,24px)}
+.navlinks .button{white-space:nowrap}
+.hero{position:relative;isolation:isolate;overflow:hidden}
+.hero:before,.hero:after{content:"";position:absolute;z-index:-1;border-radius:50%;filter:blur(2px);pointer-events:none}
+.hero:before{width:360px;height:360px;right:-110px;top:8%;background:radial-gradient(circle,#c4a5f566,transparent 68%);animation:orbFloat 11s ease-in-out infinite alternate}
+.hero:after{width:240px;height:240px;left:35%;bottom:-150px;background:radial-gradient(circle,#9165d544,transparent 70%);animation:orbFloat 14s ease-in-out infinite alternate-reverse}
+@keyframes orbFloat{from{transform:translate3d(0,0,0) scale(.92)}to{transform:translate3d(-26px,28px,0) scale(1.12)}}
+.hero .eyebrow,.hero h1,.hero .lead,.hero .actions,.hero .micro,.hero .visual{opacity:0;animation:heroEnter .75s cubic-bezier(.2,.75,.25,1) forwards}
+.hero .eyebrow{animation-delay:.08s}.hero h1{animation-delay:.17s}.hero .lead{animation-delay:.27s}.hero .actions{animation-delay:.37s}.hero .micro{animation-delay:.46s}.hero .visual{animation-delay:.25s}
+@keyframes heroEnter{from{opacity:0;transform:translateY(22px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}
+.reveal-on-scroll{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+.reveal-on-scroll.is-visible{opacity:1;transform:translateY(0)}
+.reveal-on-scroll[data-delay="1"]{transition-delay:.08s}.reveal-on-scroll[data-delay="2"]{transition-delay:.16s}.reveal-on-scroll[data-delay="3"]{transition-delay:.24s}
+.scroll-progress{position:fixed;left:0;top:0;height:3px;width:0;z-index:60;background:linear-gradient(90deg,#9165d5,#c4a5f5);box-shadow:0 0 12px #9165d566}
+.hero .visual{transition:transform .35s ease,box-shadow .35s ease}
+.hero .visual:hover{transform:translateY(-5px) rotate(-.4deg);box-shadow:0 38px 90px #47277d30}
+.card,.journey button,.scenario button,.operations-grid a{transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease}
+.card:hover{transform:translateY(-5px);box-shadow:0 22px 48px #47277d17}
+.journey button:hover,.scenario button:hover,.operations-grid a:hover{transform:translateY(-2px)}
+.button{transition:transform .2s ease,box-shadow .2s ease,background .2s ease}
+.button:hover{transform:translateY(-2px);box-shadow:0 12px 26px #47277d2b}
+.video-chapter{padding:88px 0;background:linear-gradient(180deg,#efe7fc,#f8f5ff)}
+.video-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.video-card{position:relative;display:flex;flex-direction:column;gap:18px;min-height:260px;padding:26px;border:1px solid #c4a5f5;border-radius:20px;background:linear-gradient(145deg,#fff,#f1eaff);color:#47277d;text-align:left;overflow:hidden;box-shadow:0 18px 46px #47277d12}
+.video-card:before{content:"";position:absolute;inset:0 0 auto;height:4px;background:linear-gradient(90deg,#9165d5,#c4a5f5)}
+.video-card:hover{transform:translateY(-5px);box-shadow:0 26px 56px #47277d22}
+.video-art{display:grid;place-items:center;min-height:145px;border:1px solid #e2d4fa;border-radius:14px;background:radial-gradient(circle at 50% 45%,#e5d5ff,#f8f5ff 70%);position:relative;overflow:hidden}
+.video-art:before,.video-art:after{content:"";position:absolute;border:1px solid #9165d566;border-radius:14px;width:65%;height:44%;transform:rotate(-8deg)}
+.video-art:after{transform:rotate(7deg);width:48%;height:60%;border-color:#c4a5f5}
+.play-mark{z-index:1;display:grid;place-items:center;width:58px;height:58px;border-radius:50%;background:#9165d5;color:#fff;font-size:22px;box-shadow:0 8px 25px #47277d44}
+.video-card h3{font-size:22px;margin:0;letter-spacing:-.035em}
+.video-card p{margin:0;font-size:14px}
+.video-meta{display:flex;align-items:center;justify-content:space-between;gap:12px;color:#725995;font-size:12px;font-weight:750}
+.video-modal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:24px;background:#160c25d9;backdrop-filter:blur(12px)}
+.video-modal[aria-hidden="false"]{display:flex}
+.video-dialog{width:min(1080px,100%);background:#170d2b;border:1px solid #9165d5;border-radius:20px;padding:14px;box-shadow:0 35px 100px #0008}
+.video-dialog-head{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:4px 4px 14px;color:#fff}
+.video-dialog-head h3{margin:0;font-size:18px}
+.video-close{width:42px;height:42px;border:1px solid #8c69b4;border-radius:12px;background:#2c1746;color:#fff;font-size:22px}
+.video-player-wrap{aspect-ratio:16/9;background:#090611;border-radius:12px;overflow:hidden;display:grid;place-items:center}
+.video-player-wrap video{width:100%;height:100%;object-fit:contain}
+.video-fallback{max-width:520px;padding:28px;text-align:center;color:#e8dcff}
+.video-fallback p{color:#cdb9e8}
+.contact-panel{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-top:22px;padding:24px;border:1px solid #c4a5f5;border-radius:16px;background:#fff}
+.builder-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;margin-top:24px}
+.builder-panel{padding:26px;border:1px solid #c4a5f5;border-radius:16px;background:#fff}
+.builder-panel h3{margin-top:0}
+.builder-panel p{font-size:14px}
+.builder-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.builder-tags span{padding:8px 11px;border:1px solid #d9c8f3;border-radius:99px;background:#f6f0ff;color:#56358a;font-size:12px;font-weight:750}
+.contact-anchor{scroll-margin-top:100px}
+@media(max-width:850px){.builder-grid{grid-template-columns:1fr}.video-chapter{padding:62px 0}.video-card{min-height:230px}}
+@media(max-width:620px){.video-grid{grid-template-columns:1fr}.video-card{min-height:210px;padding:18px}.video-art{min-height:125px}.video-modal{padding:10px}.video-dialog{padding:9px;border-radius:14px}.contact-panel{align-items:flex-start}.navlinks a[href="#videos"],.navlinks a[href="#how"],.navlinks a[href="#explore"]{display:none}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.hero:before,.hero:after{animation:none!important}.hero .eyebrow,.hero h1,.hero .lead,.hero .actions,.hero .micro,.hero .visual{opacity:1;animation:none!important}.reveal-on-scroll{opacity:1;transform:none;transition:none}.card,.journey button,.scenario button,.operations-grid a,.button,.video-card{transition:none}}
+
+</style><style id="about-builder-responsive">
+.about-builder{scroll-margin-top:96px}
+.about-builder .sectionhead{max-width:820px}
+.about-builder .sectionhead h2 em{font-style:normal;color:#d3b1ff}
+.about-founder{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);align-items:center;gap:clamp(22px,4vw,48px);margin:28px 0}
+.about-avatars{position:relative;min-width:0;width:100%;max-width:540px;min-height:390px;margin:auto}
+.about-avatar{position:absolute;margin:0;overflow:hidden;border:1px solid #9865d6;border-radius:22px;background:#241339;box-shadow:0 26px 70px #07031080}
+.about-avatar img{display:block;width:100%;height:100%;object-fit:cover}
+.about-avatar-photo{left:1%;top:0;width:67%;height:330px}
+.about-avatar-illustration{right:0;bottom:0;width:48%;height:235px;border:5px solid #170c2b}
+.about-avatar figcaption{position:absolute;inset:auto 0 0;display:grid;gap:3px;padding:36px 14px 12px;color:#fff;background:linear-gradient(transparent,#10071edb)}
+.about-avatar figcaption strong{font-size:13px}
+.about-avatar figcaption span{font-size:11px;color:#e0d1f4}
+.about-founder-copy{padding:clamp(22px,3vw,34px)}
+.about-founder-copy h3{font-size:clamp(23px,3vw,32px);margin:12px 0}
+.about-founder-copy p{line-height:1.8}
+.about-overline{font-size:10px;font-weight:850;letter-spacing:.14em;color:#bfa0ed}
+.about-profile-links{display:flex;flex-wrap:wrap;gap:9px;margin-top:20px}
+.about-profile-links a{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:10px 13px;border:1px solid #9865d6;border-radius:10px;background:#2b1945;color:#f3eaff;font-size:13px;font-weight:750}
+.about-profile-links a:hover,.about-profile-links a:focus-visible{background:#442366}
+.about-reason-grid{align-items:stretch}
+.about-reason-grid .builder-panel{min-width:0}
+.about-reason-grid .builder-panel h3{font-size:22px;line-height:1.25}
+.about-reason-grid .builder-panel p{line-height:1.8}
+.about-trust{margin-top:24px}
+.about-trust h2{color:#fff}
+.about-trust .eyebrow{background:#321c50;color:#d9bbff;border-color:#65438a}
+.about-builder .contact-panel{margin-top:22px}
+@media(max-width:850px){
+ .about-founder{grid-template-columns:minmax(0,1fr);gap:14px}
+ .about-avatars{min-height:360px;width:min(100%,520px)}
+ .about-avatar-photo{height:300px}
+ .about-avatar-illustration{height:215px}
+}
+@media(max-width:620px){
+ .bar{padding:10px 16px;gap:9px;flex-wrap:wrap}
+ .navlinks{display:flex!important;order:2;width:100%;gap:7px;overflow-x:auto;overflow-y:hidden;white-space:nowrap;padding:3px 0 7px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+ .navlinks::-webkit-scrollbar{display:none}
+ .navlinks a:not(.button){display:inline-flex!important;flex:0 0 auto;align-items:center;min-height:40px;padding:8px 10px;border:1px solid #74519b;border-radius:9px;background:#2b1945;color:#f3eaff;font-size:12px}
+ .navlinks .button{display:inline-flex;flex:0 0 auto;min-height:40px;padding:8px 12px;font-size:12px}
+ .about-builder{padding:54px 0}
+ .about-builder .sectionhead h2{font-size:clamp(30px,9vw,40px)}
+ .about-founder{margin:20px 0;gap:12px}
+ .about-avatars{min-height:310px;max-width:420px}
+ .about-avatar-photo{width:68%;height:250px}
+ .about-avatar-illustration{width:48%;height:180px;border-width:4px}
+ .about-avatar{border-radius:17px}
+ .about-avatar figcaption{padding:28px 10px 9px}
+ .about-avatar figcaption strong{font-size:12px}
+ .about-avatar figcaption span{font-size:10px}
+ .about-founder-copy{padding:19px}
+ .about-profile-links{display:grid;grid-template-columns:1fr}
+ .about-profile-links a{width:100%;justify-content:space-between}
+ .about-reason-grid{grid-template-columns:1fr;gap:12px}
+ .about-reason-grid .builder-panel{padding:19px}
+ .about-trust{padding:22px}
+ .about-trust .actions{display:grid;grid-template-columns:1fr}
+ .about-trust .actions a{width:100%}
+ .about-builder .contact-panel{padding:19px}
+}
+@media(prefers-reduced-motion:reduce){.about-profile-links a{transition:none}}
 </style></head>
-<body><header><div class="bar"><a class="logo" href="#main" aria-label="SYNES home"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M7 10 20 3 33 10 33 29 20 37 7 29Z" fill="none" stroke="#c79bff" stroke-width="3"/><path d="M7 10 20 20 33 10M20 20V37M7 29 20 20 33 29" stroke="#a86aef" stroke-width="2.4" fill="none"/><circle cx="20" cy="20" r="4" fill="#e1c7ff"/></svg></span>SYNES</a><nav class="navlinks" aria-label="Main navigation"><a href="#studio">Build</a><a href="#how">Investigate</a><a href="#explore">Explore</a><a href="#about">About</a><a class="button" href="#studio">Try SYNES ↓</a></nav></div></header>
+<body><header><div class="bar"><a class="logo" href="#main" aria-label="SYNES home"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M7 10 20 3 33 10 33 29 20 37 7 29Z" fill="none" stroke="#c79bff" stroke-width="3"/><path d="M7 10 20 20 33 10M20 20V37M7 29 20 20 33 29" stroke="#a86aef" stroke-width="2.4" fill="none"/><circle cx="20" cy="20" r="4" fill="#e1c7ff"/></svg></span>SYNES</a><nav class="navlinks" aria-label="Main navigation"><a href="#studio">Build</a><a href="#how">Investigate</a><a href="#videos">Videos</a><a href="#about">About</a><a class="button" href="#contact">Contact</a></nav></div></header>
 <a class="skip-link" href="#main">Skip to content</a><main id="main"><section class="hero"><div class="wrap hero-grid"><div><span class="eyebrow">Independent workflow operations lab</span><h1>Investigate failures.<br><em>Follow the evidence.</em></h1><p class="lead">Explore how workflow incidents move from a failed execution to a reasoned diagnosis, human review and verified recovery. An interactive, synthetic lab built for technical investigation.</p><div class="actions"><a class="button" href="#studio">Build a workflow ↓</a><a class="button alt" href="#how">See how it works ↓</a></div><p class="micro">No account needed · Synthetic data · No real Tines integration</p></div><div class="visual" aria-label="Illustrative synthetic incident workflow"><div class="visual-top"><span><span class="dot"></span> Workflow investigation</span><span>DEMO / 001</span></div><div class="diagram"><div class="mini-node"><b>01</b>Execution fails</div><span class="connector">→</span><div class="mini-node"><b>02</b>Inspect evidence</div><span class="connector">→</span><div class="mini-node"><b>03</b>Review recovery</div></div><div class="evidence"><span>HTTP 422 · Missing required field</span><b>Evidence captured ✓</b></div></div></div></section>
-<section class="studio-chapter" id="studio" aria-labelledby="studio-title"><div class="wrap"><div class="studio-intro"><span class="eyebrow">Chapter 01 / Build</span><h2 id="studio-title">Your workflow. Your decisions.</h2><p>Drag nodes, connect steps and configure a synthetic workflow right here. Try Simulate workflow to see how the execution appears in Monitoring. No live services are contacted.</p></div><div class="studio-frame"><iframe src="./editor.html" title="Interactive SYNES workflow editor" loading="lazy" allow="fullscreen"></iframe><div class="studio-caption"><span>Interactive workflow studio · Local graph storage · Synthetic simulation</span><a href="./editor.html" target="_blank" rel="noopener">Open editor in full screen</a></div></div></div></section>
+<section class="studio-chapter studio-wide" id="studio" aria-labelledby="studio-title"><div class="wrap"><div class="studio-intro"><span class="eyebrow">Chapter 01 / Build</span><h2 id="studio-title">Your workflow. Your decisions.</h2><p>Drag nodes, connect steps and configure a synthetic workflow right here. Try Simulate workflow to see how the execution appears in Monitoring. No live services are contacted.</p></div><div class="studio-frame"><iframe src="./editor.html" title="Interactive SYNES workflow editor" loading="lazy" allow="fullscreen"></iframe><div class="studio-caption"><span>Interactive workflow studio · Local graph storage · Synthetic simulation</span><span>Build, connect, and simulate here without leaving this page</span></div></div></div></section>
 <section class="section alt" id="how"><div class="wrap"><div class="sectionhead"><span class="eyebrow">The investigation journey</span><h2>From a failed step to a defensible decision.</h2><p>Explore the stages below. Every decision in the demonstration is tied to synthetic evidence and a visible human approval boundary.</p></div><div class="journey" id="journey"><button type="button" aria-pressed="true" data-stage="0"><span class="number">01</span><strong>Detect</strong><small>Execution signal</small></button><button type="button" aria-pressed="false" data-stage="1"><span class="number">02</span><strong>Inspect</strong><small>Execution evidence</small></button><button type="button" aria-pressed="false" data-stage="2"><span class="number">03</span><strong>Diagnose</strong><small>Explain likely cause</small></button><button type="button" aria-pressed="false" data-stage="3"><span class="number">04</span><strong>Approve</strong><small>Human review</small></button><button type="button" aria-pressed="false" data-stage="4"><span class="number">05</span><strong>Verify</strong><small>Recovery and audit</small></button></div><div class="detail" id="stage-detail" role="status">A synthetic workflow run reports an HTTP error. The execution is recorded for investigation.</div></div></section>
 <section class="section" id="explore"><div class="wrap"><div class="sectionhead"><span class="eyebrow">Interactive incident preview</span><h2>Three failures. Three investigation paths.</h2><p>Select a synthetic API response to inspect the evidence and suggested next step. This preview does not make network calls or change your lab data.</p></div><div class="scenario" role="group" aria-label="Choose incident scenario"><button type="button" data-code="401" aria-pressed="true">401 · Authentication</button><button type="button" data-code="422" aria-pressed="false">422 · Validation</button><button type="button" data-code="429" aria-pressed="false">429 · Rate limit</button></div><p class="micro" id="scenario-context" role="status">Selected: HTTP 401 · Authentication. Synthetic preview only.</p><div class="case"><div class="card" aria-live="polite"><small>OBSERVED SIGNAL</small><strong id="case-title">Credential rejected</strong><p id="case-evidence">A synthetic API log records HTTP 401 after a demo credential is rejected.</p></div><div class="card" aria-live="polite"><small>PROPOSED NEXT STEP</small><strong id="case-action">Review credential scope</strong><p id="case-note">Inspect the configured demo credential. Any simulated remediation requires human approval before recovery can be verified.</p></div></div><div class="actions"><a class="button" id="scenario-lab-link" href="./lab.html#Workflows">Open Workflow Studio →</a><a class="button alt" href="./lab.html#Monitoring">View monitoring →</a></div></div></section>
 <section class="section alt"><div class="wrap"><div class="sectionhead"><span class="eyebrow">Explore the workspace</span><h2>Not just a presentation. A lab you can use.</h2></div><div class="cards"><article class="card"><span class="number">↗</span><h3>Workflow Studio</h3><p>Inspect nodes, simulate runs, explore execution history and review draft publishing.</p><a class="textlink" href="./lab.html#Workflows">Explore workflows →</a></article><article class="card"><span class="number">◷</span><h3>Monitoring</h3><p>Review synthetic usage, retries and run evidence calculated from simulated executions.</p><a class="textlink" href="./lab.html#Monitoring">Explore monitoring →</a></article><article class="card"><span class="number">✓</span><h3>Governance and decisions</h3><p>Try time-limited access reviews, publishing approvals and build/buy/borrow evaluations.</p><a class="textlink" href="./lab.html#Access">Explore governance →</a></article></div></div></section>
 <section class="operations-chapter" id="operations" aria-labelledby="operations-title"><div class="wrap"><div class="studio-intro"><span class="eyebrow">Chapter 02 / Operate</span><h2 id="operations-title">From a workflow to operational evidence.</h2><p>Explore the same synthetic workspace below. Monitor runs, review access requests, evaluate decisions and inspect the activity trail without leaving this page.</p></div><nav class="operations-grid" aria-label="Operations sections"><a href="#operations" data-ops="Monitoring">Monitoring</a><a href="#operations" data-ops="Access">Access &amp; governance</a><a href="#operations" data-ops="Decisions">Decisions</a><a href="#operations" data-ops="Activity">Activity</a><a href="#operations" data-ops="Incidents">Investigations</a></nav><p class="operations-status" id="operations-status" role="status">Monitoring is ready to explore.</p><div class="operations-frame"><iframe id="operations-lab" src="./lab.html#Monitoring" title="Interactive SYNES operations lab" loading="lazy"></iframe></div><p class="micro">All operations are synthetic. Approval actions and run records stay within your browser session.</p></div></section>
-<section class="section" id="about"><div class="wrap"><div class="trust"><span class="eyebrow">Built with clear boundaries</span><h2>Designed to demonstrate reasoning, not pretend to be production.</h2><p>SYNES is an independent portfolio project using synthetic scenarios and illustrative workflow data. The public preview runs in your browser. A separate local Python incident engine exists but is not connected to this static website. There is no live Tines integration, real AI inference or production reviewer authentication.</p><p>Built by a Dublin-based computing graduate with 2.5+ years of BI/ETL operations experience, using SQL, Python and troubleshooting practices.</p><div class="actions"><a class="button" href="./lab.html#Home">Enter the lab →</a><a class="button alt" href="https://github.com/ShaikArham" target="_blank" rel="noopener noreferrer">View portfolio ↗</a></div></div></div></section></main>
-<footer class="footer"><div class="wrap"><span>© SYNES · Independent educational project. Not affiliated with, endorsed by, or sponsored by Tines. All scenarios and data are synthetic.</span><a href="./lab.html#About">About the builder</a></div></footer>
+<section class="video-chapter" id="videos" aria-labelledby="videos-title"><div class="wrap"><div class="sectionhead"><span class="eyebrow">Watch SYNES in action</span><h2 id="videos-title">See the workflow. Follow the investigation.</h2><p>Two short walkthroughs will take you through the product experience and explain the thinking behind the project.</p></div><div class="video-grid"><button class="video-card" type="button" data-video="guide" aria-haspopup="dialog"><span class="video-art"><span class="play-mark" aria-hidden="true">▶</span></span><span class="video-meta"><span>01 / PRODUCT WALKTHROUGH</span><span>OPEN VIDEO ↗</span></span><h3>SYNES Video Guide</h3><p>Build a workflow, simulate an execution, investigate a failure, review an approval and verify the outcome.</p></button><button class="video-card" type="button" data-video="why" aria-haspopup="dialog"><span class="video-art"><span class="play-mark" aria-hidden="true">▶</span></span><span class="video-meta"><span>02 / PROJECT CONTEXT</span><span>OPEN VIDEO ↗</span></span><h3>Why SYNES for Tines</h3><p>The support engineering ideas behind SYNES, the product concepts it explores and the boundaries of the demo.</p></button></div><p class="micro">The video player is prepared for the two original screen recordings. The recordings will be connected once they are captured.</p></div></section>
+<div class="video-modal" id="video-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="video-modal-title"><div class="video-dialog"><div class="video-dialog-head"><h3 id="video-modal-title">SYNES Video Guide</h3><button class="video-close" type="button" aria-label="Close video">×</button></div><div class="video-player-wrap"><video id="synes-video-player" controls playsinline preload="metadata" hidden></video><div class="video-fallback" id="video-fallback"><div class="play-mark" aria-hidden="true">▶</div><h3>Screen recording in preparation</h3><p>This player will show the original SYNES walkthrough. No mock product footage will be used.</p></div></div></div></div>
+<section class="section about-builder" id="about" aria-labelledby="about-title">
+  <div class="wrap">
+    <div class="sectionhead">
+      <span class="eyebrow">The person behind the project</span>
+      <h2 id="about-title">The thinking behind <em>SYNES.</em></h2>
+      <p>SYNES began with a practical question: when an automated workflow fails, can the person supporting it follow the evidence, explain what happened, make a safe decision and show that recovery worked?</p>
+    </div>
+
+    <div class="about-founder">
+      <div class="about-avatars" aria-label="Arham's portfolio avatars">
+        <figure class="about-avatar about-avatar-photo">
+          <img src="https://arham-bi.vercel.app/assets/arham-speaking.webp" alt="Arham's portrait from his portfolio" width="1200" height="900" loading="lazy" decoding="async">
+          <figcaption><strong>Shaik Arham Saquib</strong><span>Builder · Dublin, Ireland</span></figcaption>
+        </figure>
+        <figure class="about-avatar about-avatar-illustration">
+          <img src="https://arham-bi.vercel.app/assets/arham-build.webp?v=mobile5" alt="Arham's illustrated portfolio character working with a laptop" width="900" height="1095" loading="lazy" decoding="async">
+          <figcaption><strong>Build with intent</strong><span>Evidence · workflows · people</span></figcaption>
+        </figure>
+      </div>
+      <article class="builder-panel about-founder-copy">
+        <span class="about-overline">INDEPENDENTLY BUILT · DUBLIN, IRELAND</span>
+        <h3>Meet the builder</h3>
+        <p>I'm Arham. My background combines 2.5+ years in enterprise BI, ERP and reporting operations at Hitachi Digital Services with an MSc in Computing (Data Analytics) from Dublin City University.</p>
+        <p>That experience shaped how I approach technical problems: start with the evidence, isolate the failure, explain the options and verify the outcome. I created SYNES to put that way of thinking into an interactive environment that people can explore for themselves.</p>
+        <div class="about-profile-links">
+          <a href="https://arham-bi.vercel.app/" target="_blank" rel="noopener noreferrer">Portfolio <span aria-hidden="true">↗</span></a>
+          <a href="https://github.com/ShaikArham" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+          <a href="https://arham-bi.vercel.app/assets/Shaik_Arham_Saquib.pdf" target="_blank" rel="noopener noreferrer">CV <span aria-hidden="true">↗</span></a>
+        </div>
+      </article>
+    </div>
+
+    <div class="builder-grid about-reason-grid">
+      <article class="builder-panel">
+        <span class="about-overline">01 / WHY I BUILT SYNES</span>
+        <h3>Make the work behind the workflow visible.</h3>
+        <p>Automation is only useful when people can trust and support it. SYNES brings together a visual workflow builder, synthetic API failures, execution evidence, human approval checkpoints, recovery verification and an activity trail.</p>
+        <p>I wanted the experience to show more than a successful run. It should also show how someone investigates a failure, understands the uncertainty, decides what is safe to do and checks whether the recovery actually worked.</p>
+        <div class="builder-tags"><span>Workflow design</span><span>Incident triage</span><span>HTTP 401 / 422 / 429</span><span>Evidence-led diagnosis</span><span>Human approval</span><span>Audit trail</span></div>
+      </article>
+      <article class="builder-panel">
+        <span class="about-overline">02 / WHAT YOU CAN EXPLORE</span>
+        <h3>One project, several operational perspectives.</h3>
+        <p><strong>Build:</strong> create and connect workflow steps, configure nodes and simulate a run.</p>
+        <p><strong>Investigate:</strong> inspect a failed step, review response evidence and explain a likely cause.</p>
+        <p><strong>Decide:</strong> keep a human approval boundary before a proposed recovery action.</p>
+        <p><strong>Verify:</strong> inspect the simulated result and retain an activity record.</p>
+        <p><strong>Support:</strong> communicate the issue, impact, evidence, next action and outcome clearly.</p>
+      </article>
+    </div>
+
+    <div class="trust about-trust">
+      <span class="eyebrow">Independence and boundaries</span>
+      <h2>Support thinking for intelligent workflows.</h2>
+      <p>SYNES is an independent educational portfolio project. It is not an official Tines product and is not affiliated with, endorsed by or sponsored by Tines. It does not connect to a Tines tenant or claim feature parity. The overlap is in the problem-solving approach: understand the workflow, inspect the evidence, keep people in control and verify the result.</p>
+      <p>All incidents, records and workflow runs shown here are synthetic. The demonstration does not perform real-world remediation or use real customer data.</p>
+      <div class="actions"><a class="button" href="#studio">Explore the builder ↓</a><a class="button alt" href="https://arham-bi.vercel.app/" target="_blank" rel="noopener noreferrer">View portfolio ↗</a></div>
+    </div>
+
+    <div class="contact-panel contact-anchor" id="contact">
+      <div><span class="eyebrow">Get in touch</span><h2 style="margin:12px 0 4px">Let's talk about the work.</h2><p style="margin:0">Questions about SYNES, the workflow design or my application? I'd be happy to hear from you.</p></div>
+      <a class="button" href="mailto:shaikarhamsaquib1188113@gmail.com?subject=SYNES%20project%20enquiry">Contact Arham ↗</a>
+    </div>
+  </div>
+</section></main>
+<footer class="footer"><div class="wrap"><span>© SYNES · Independent educational project. Not affiliated with, endorsed by, or sponsored by Tines. All scenarios and data are synthetic.</span><a href="#about">About the builder</a><a href="mailto:shaikarhamsaquib1188113@gmail.com">Contact</a></div></footer>
 <script>
 const stages=['A synthetic workflow run reports an HTTP error. The execution is recorded for investigation.','Inspect execution and API-log evidence, including the affected step and response code.','Use the recorded evidence to propose a likely cause while retaining uncertainty.','A reviewer must explicitly approve a proposed simulated remediation. No automatic production changes occur.','Check the synthetic recovery result and record the outcome in the incident audit trail.'];
 const cases={'401':['Credential rejected','A synthetic API log records HTTP 401 after a demo credential is rejected.','Review credential scope','Inspect the configured demo credential. Any simulated remediation requires human approval before recovery can be verified.'],'422':['Required field missing','A synthetic API log records HTTP 422 because the priority field is missing.','Validate request payload','Review the required fields and propose adding the missing priority value before an approved retry.'],'429':['Request rate limited','A synthetic API log records HTTP 429 after the illustrative endpoint applies throttling.','Inspect retry behaviour','Review request volume and retry-after evidence before proposing a controlled retry.']};
@@ -65,4 +263,24 @@ document.querySelectorAll('[data-code]').forEach(button=>button.addEventListener
 const opsFrame=document.getElementById('operations-lab'),opsStatus=document.getElementById('operations-status');
 document.querySelectorAll('[data-ops]').forEach(link=>link.addEventListener('click',()=>{const page=link.dataset.ops;if(!['Monitoring','Access','Decisions','Activity','Incidents'].includes(page))return;opsFrame.src='./lab.html#'+page;opsStatus.textContent=page+' workspace selected.';}));
 window.addEventListener('message',event=>{if(event.origin!==location.origin||event.data?.type!=='synes:editor-run'||event.data?.schema!==1)return;const editorFrame=document.querySelector('#studio iframe');if(event.source!==editorFrame?.contentWindow)return;opsFrame.src='./lab.html#Monitoring';opsStatus.textContent='Workflow simulation transferred. Inspect Monitoring and Activity below.';document.getElementById('operations').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});});
+
+/* Scroll reveal, progress and video modal */
+(()=>{
+ const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+ const header=document.querySelector('header');
+ const progress=document.createElement('div');progress.className='scroll-progress';progress.setAttribute('aria-hidden','true');document.body.append(progress);
+ const update=()=>{const max=document.documentElement.scrollHeight-window.innerHeight;progress.style.width=(max>0?window.scrollY/max*100:0)+'%';header?.classList.toggle('is-scrolled',window.scrollY>12)};
+ window.addEventListener('scroll',update,{passive:true});update();
+ const revealTargets=[...document.querySelectorAll('.sectionhead,.studio-frame,.visual,.journey,.case,.cards,.operations-frame,.trust,.builder-panel,.video-card,.contact-panel')];
+ revealTargets.forEach((el,i)=>{el.classList.add('reveal-on-scroll');if(i%4)el.dataset.delay=String(i%4)});
+ if(!reduce&&'IntersectionObserver'in window){const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');observer.unobserve(entry.target)}}),{threshold:.12,rootMargin:'0px 0px -35px 0px'});revealTargets.forEach(el=>observer.observe(el))}
+ else revealTargets.forEach(el=>el.classList.add('is-visible'));
+ const modal=document.getElementById('video-modal'),player=document.getElementById('synes-video-player'),fallback=document.getElementById('video-fallback'),title=document.getElementById('video-modal-title'),close=modal?.querySelector('.video-close');
+ const sources={guide:'./assets/videos/synes-video-guide.mp4',why:'./assets/videos/why-synes-for-tines.mp4'};
+ let lastFocus=null;
+ function closeModal(){if(!modal)return;modal.setAttribute('aria-hidden','true');player.pause();player.removeAttribute('src');player.load();player.hidden=true;fallback.hidden=false;document.body.style.overflow='';lastFocus?.focus();lastFocus=null}
+ document.querySelectorAll('[data-video]').forEach(button=>button.addEventListener('click',()=>{if(!modal)return;lastFocus=button;const key=button.dataset.video;title.textContent=key==='why'?'Why SYNES for Tines':'SYNES Video Guide';modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';const src=sources[key];player.hidden=false;fallback.hidden=true;player.src=src;player.onerror=()=>{player.hidden=true;fallback.hidden=false};player.load();close?.focus()}));
+ close?.addEventListener('click',closeModal);modal?.addEventListener('click',e=>{if(e.target===modal)closeModal()});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal?.getAttribute('aria-hidden')==='false')closeModal()});
+})();
+
 </script></body></html>
