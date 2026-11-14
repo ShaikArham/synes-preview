@@ -1,14 +1,14 @@
 <div align="center">
 
-# SYNES / PUBLIC PREVIEW
+# SYNES
 
-### A SUPPORT INVESTIGATION, NOT A BLACK BOX.
+### BUILD, TEST AND INVESTIGATE WORKFLOWS WITH CONFIDENCE
 
-**A static public preview of the SYNES synthetic incident-investigation concept.**
+**An independent workflow automation and operations lab.**
 
-[**Explore the demo**](https://shaikarham.github.io/synes-preview/) · [**Source repository**](https://github.com/ShaikArham/synes-preview) · [**Arham's portfolio**](https://arham-bi.vercel.app/)
+![Status](https://img.shields.io/badge/Project-Independent%20demo-7353ba?style=flat-square) ![Scenarios](https://img.shields.io/badge/Data-Synthetic-334155?style=flat-square) ![Review](https://img.shields.io/badge/Actions-Human%20review-075d60?style=flat-square)
 
-![Project](https://img.shields.io/badge/Portfolio-Independent%20project-075d60?style=flat-square) ![Evidence](https://img.shields.io/badge/Approach-Evidence%20first-334155?style=flat-square)
+[**Project source**](https://github.com/ShaikArham/synes) · [**Public demo**](https://synes-dublin.vercel.app) · [**Portfolio**](https://arham-bi.vercel.app/)
 
 *Shaik Arham Saquib · Dublin, Ireland*
 
@@ -16,48 +16,43 @@
 
 ---
 
-## 01 / THE QUESTION
+## What is SYNES?
 
-**What should a support engineer see between a failed workflow and an approved recovery?**
+SYNES is an independent educational project exploring how teams build, run, monitor and troubleshoot workflow automations. It brings a visual workflow composer together with synthetic execution scenarios, incident investigation, approval steps and operational activity.
 
-The preview illustrates evidence gathering, diagnosis, approval and recovery verification for synthetic workflow failures.
+The project is built around practical questions: What happened during a run? Which step failed? What evidence helps explain it? What should happen before a change is approved? How can recovery be checked?
 
-> **The goal:** Show the reasoning behind the result, not just the interface that displays it.
+## Explore the project
 
-## 02 / AT A GLANCE
-
-**401 | 422 | 429 | Evidence | Approval | Recovery verification**
-
-| Reviewer's lens | What to look for |
+| Area | What it demonstrates |
 | :--- | :--- |
-| **Product thinking** | The operational question and intended user journey |
-| **Engineering** | Static HTML and GitHub Pages publication. |
-| **Evidence** | Reproducible examples, explicit rules and documented boundaries |
-| **Trust** | A preview is not a connected Tines account, production service or proof of live API-backed recovery. |
+| **Workflow Studio** | Create and inspect visual workflows, configure steps and simulate execution |
+| **Incident Investigation** | Explore synthetic HTTP 401, 422 and 429 failures, evidence, diagnosis and recovery verification |
+| **Monitoring and Activity** | Review execution history and the events recorded during a demo session |
+| **Approvals** | Follow human-review steps before simulated remediation or report output |
+| **Finance workflow** | Request an October report, prepare a draft, review it and generate a local synthetic CSV |
 
-## 03 / FIVE-MINUTE REVIEW
+These are educational demonstrations using fictional records. They are not connected to production systems.
 
-Explore the static preview, then review the main SYNES project for the local incident engine and testable workflow.
+## Run locally
 
-## 04 / WHAT IT DEMONSTRATES
+```bash
+python -m unittest discover -s tests -v
+python -m synes
+```
 
-- **Problem framing:** Make the operational decision and its context explicit.
-- **Traceability:** Explain the inputs, transformations and outputs a reviewer can inspect.
-- **Responsible claims:** Separate fictional scenarios, demonstrated results and future work.
-- **Communication:** Make technical decisions understandable to both analysts and hiring managers.
+The API runs locally at `http://127.0.0.1:8080`.
 
-## 05 / IMPLEMENTATION AND REPRODUCTION
+## Project boundaries
 
-The original project documentation follows below, including exact commands, metric definitions, architecture, test evidence and limitations where available. The project README remains the authoritative source for its own implementation details.
+- SYNES is an independent project. It is not affiliated with, endorsed by, or sponsored by Tines.
+- The project does not connect to a live Tines workspace or claim to reproduce Tines' internal architecture.
+- Scenarios, records, actors and execution results are synthetic.
+- Role labels in the demo are illustrative. They are not authenticated production access controls.
+- No external messages, payments or production actions are performed.
+
+See [Independence and originality](INDEPENDENCE_AND_ORIGINALITY.md) for the project's branding, design and publishing boundaries.
 
 ---
 
-## Detailed project documentation
-
-Static SYNES concept preview. See the main SYNES repository for implementation details and limitations.
-
-## Independent project and originality
-
-SYNES is an independent educational workflow operations and incident investigation project. It is **not affiliated with, endorsed by, or sponsored by Tines**. All scenarios and data are synthetic. SYNES uses its own branding, Lavender Cloud theme, and independently developed interface; it does not claim to be a Tines product or live integration.
-
-See [Independence and original-work guidelines](INDEPENDENCE_AND_ORIGINALITY.md) for design, code, branding, asset and publishing boundaries. This disclaimer does not guarantee freedom from legal claims.
+[**Explore the repository**](https://github.com/ShaikArham/synes) · [**Open the public demo**](https://synes-dublin.vercel.app) · [**Meet the builder**](https://arham-bi.vercel.app/)
