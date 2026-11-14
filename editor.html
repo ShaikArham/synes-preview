@@ -41,11 +41,105 @@ svg{pointer-events:none}
 .assistant .hint{font-size:12px;margin:0}
 @media(max-width:1050px){.layout{grid-template-columns:145px minmax(0,1fr) 265px}}
 @media(max-width:850px){.layout{height:auto;min-height:0;display:flex;flex-direction:column}.center{height:65dvh;min-height:480px}.assistant{min-height:0}.chat-log{max-height:220px}}
+
+/* SYNES studio refinement — aligned with the Lavender Cloud landing page */
+:root{color-scheme:light;scroll-behavior:smooth}
+body{min-width:320px;min-height:100vh;background:#f8f5ff;color:#47277d;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+header{position:sticky;top:0;z-index:40;min-height:72px;padding:12px clamp(12px,2vw,28px);gap:10px;background:#fff;border-bottom:1px solid #e8dcff;box-shadow:0 8px 28px #47277d0c}
+header strong{font-size:17px;letter-spacing:-.035em;margin-right:8px}
+header span{color:#735a91;font-size:12px;margin-right:auto}
+header button{padding:10px 14px;border-radius:10px;font-weight:700;background:#f0e8fc;color:#47277d;border:1px solid #c4a5f5;transition:transform .18s ease,background .18s ease}
+header button:hover{transform:translateY(-1px);background:#e8dcff}
+header #execute{background:#9165d5;border-color:#9165d5;color:#fff;box-shadow:0 7px 18px #9165d533}
+header #execute:hover{background:#7549bd}
+header a{font-size:12px;font-weight:700;text-decoration:none;color:#65469a}
+.layout{grid-template-columns:minmax(155px,190px) minmax(0,1fr) minmax(275px,340px);height:calc(100dvh - 72px);min-height:640px;background:#f8f5ff}
+.layout>aside{padding:18px 15px;background:#fff;overflow:auto;border-color:#e8dcff}
+.layout>aside:first-child{border-right:1px solid #e8dcff}
+.layout>aside:last-child{border-left:1px solid #e8dcff}
+h2{font-size:15px;letter-spacing:-.02em;color:#47277d}
+.palette button{display:flex;align-items:center;gap:9px;min-height:42px;padding:10px 12px;margin:5px 0;border-radius:10px;background:#f8f5ff;border:1px solid #e1d4f4;color:#56358a;font-weight:650}
+.palette button:hover{background:#efe7fc;border-color:#9165d5}
+.center{background:#f3edfc}
+.toolbar{display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding:10px 12px;background:#fff;border-bottom:1px solid #e8dcff}
+.toolbar button{padding:8px 12px;margin:0;border-radius:9px;font-size:12px;font-weight:700}
+.stage{min-height:0;background-color:#f8f5ff;background-image:radial-gradient(#c4a5f5 1px,transparent 1px);background-size:22px 22px}
+.node{width:170px;min-height:86px;border:1px solid #c4a5f5;border-radius:14px;background:linear-gradient(145deg,#fff,#f3ecff);color:#47277d;box-shadow:0 5px 0 #c4a5f544,0 14px 24px #47277d17;transition:box-shadow .18s ease,border-color .18s ease}
+.node:hover{box-shadow:0 7px 0 #c4a5f544,0 20px 30px #47277d24}
+.node.selected{border:2px solid #7549bd;box-shadow:0 0 0 4px #9165d526,0 12px 24px #47277d20}
+.node .title{font-size:13px;color:#47277d}
+.node small{display:block;padding:0 13px 12px;color:#765d95;font-size:11px}
+.port{width:25px;height:25px;background:#9165d5;border:2px solid #fff;box-shadow:0 2px 7px #47277d22}
+.edge{stroke:#9165d5;stroke-width:3.5}
+.status{min-height:42px;padding:11px 14px;background:#fff;border-top:1px solid #e8dcff;color:#63498e;font-size:12px}
+.assistant{gap:12px}
+.assistant h2{margin:4px 0}
+.chat-log{min-height:125px;max-height:220px;background:#faf8ff;border-color:#e0d1f5}
+.chat-bubble{border:1px solid #e5d9f7;font-size:12px;line-height:1.5}
+.chat-bubble.user{background:#9165d5;border-color:#9165d5}
+.chat-composer textarea{min-height:100px;border-radius:12px;border-color:#c4a5f5;line-height:1.5}
+.chat-composer button{min-height:42px;border-radius:10px;background:#9165d5;color:#fff;font-weight:750}
+#inspector{padding:12px;border:1px solid #e8dcff;border-radius:12px;background:#faf8ff;color:#654b86;font-size:12px}
+#inspector label{font-size:12px;font-weight:700;color:#56358a}
+#inspector input{border-radius:9px;padding:10px}
+#inspector button{margin-top:10px;background:#efe7fc;color:#47277d;border-color:#c4a5f5}
+button:focus-visible,input:focus-visible,textarea:focus-visible,a:focus-visible{outline:3px solid #9165d5;outline-offset:3px}
+@media(max-width:1050px){.layout{grid-template-columns:145px minmax(0,1fr) 280px}.layout>aside{padding:14px 11px}}
+@media(max-width:850px){
+ header{position:sticky;gap:7px;padding:10px 12px}
+ header strong{font-size:15px}
+ header span{flex-basis:100%;order:3;margin:0}
+ header button{padding:8px 10px;font-size:12px}
+ .layout{display:flex;flex-direction:column;height:auto;min-height:0}
+ .layout>aside:first-child{order:0;border:0;border-bottom:1px solid #e8dcff;padding:12px}
+ .layout>aside:first-child h2{margin:2px 0 8px}
+ .palette{display:flex;gap:6px;overflow-x:auto;padding:2px 0 6px}
+ .palette button{flex:0 0 auto;width:auto;min-width:116px;margin:0}
+ .layout>.center{order:1;height:590px;min-height:480px}
+ .layout>aside:last-child{order:2;border:0;border-top:1px solid #e8dcff;padding:16px}
+ .assistant{display:grid;grid-template-columns:1fr 1fr;align-items:start}
+ .assistant h2:nth-of-type(2),#inspector{grid-column:1/-1}
+ .chat-log{max-height:180px}
+}
+@media(max-width:560px){
+ header{align-items:center}
+ header strong{width:100%;margin:0}
+ header a{margin-right:auto}
+ header span{font-size:11px}
+ .layout>.center{height:520px}
+ .toolbar{padding:8px;gap:5px}
+ .toolbar button{padding:7px 9px;font-size:11px}
+ .stage{min-height:0}
+ .assistant{display:flex}
+ .chat-log{max-height:170px}
+ .layout>aside:last-child{padding:14px}
+}
+@media(max-width:850px){.layout>.center{height:auto;min-height:0}.stage{flex:none;min-height:520px}}@media(prefers-reduced-motion:reduce){header button,.node{transition:none}}
+
 </style></head><body><header><strong>SYNES / Visual Studio</strong><a href="./lab.html#Workflows">← Workflow Lab</a><span>Independent synthetic editor · No live integrations</span><button id="execute">Simulate workflow</button><button id="save">Save graph</button><button id="reset">Reset</button></header><div class="layout"><aside><h2>Node palette</h2><div class="palette" id="palette"></div><p>Tap to add. Drag nodes. Connect an output port to an input port by tapping both.</p></aside><section class="center" aria-label="Workflow editor"><div class="toolbar"><button id="plus">Zoom +</button><button id="minus">Zoom −</button><button id="fit">Fit view</button><button id="unlink">Remove connection</button></div><div class="stage" id="stage" tabindex="0" aria-label="Workflow graph"><div class="world" id="world"><svg id="edges" width="1800" height="1200"></svg><div id="nodes"></div></div></div><div class="status" id="status" role="status" aria-live="polite">Choose a node. Arrow keys move selected nodes, Delete removes, Escape cancels.</div></section><aside><div class="assistant"><h2>Build with SYNES</h2><p class="hint">Describe a workflow. SYNES builds nodes step by step using local rules. This is not a live AI service.</p><div class="chat-log" id="chat-log" role="log" aria-live="polite"><div class="chat-bubble">Try: Build a new workflow with trigger, AI and notification.</div></div><form id="chat-form" class="chat-composer"><label for="chat-input">Your workflow</label><textarea id="chat-input" maxlength="1000" placeholder="When a payment arrives, validate it, call an API, request approval and send a notification..." required></textarea><button type="submit" id="chat-send">Build workflow step by step</button></form><p class="hint">Your prompt is processed locally. Review each node and connection before simulating.</p><h2>Node inspector</h2><div id="inspector">Select a node to configure it.</div></div></aside></div><script>
 (()=>{'use strict';const TYPES={trigger:[0,1],http:[1,1],transform:[1,1],condition:[1,1],ai:[1,1],approval:[1,1],notification:[1,0],recovery:[1,1]},KEY='synes-editor-v1',VERSION=1,$=id=>document.getElementById(id),esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])),seed=()=>({version:VERSION,nodes:[{id:'a',type:'trigger',x:60,y:120,label:'Survey received',config:''},{id:'b',type:'transform',x:340,y:120,label:'Validate',config:''},{id:'c',type:'approval',x:620,y:120,label:'Review',config:''}],edges:[{from:'a',to:'b'},{from:'b',to:'c'}]});let graph=seed(),selected='',from='',edge='',scale=.8,px=30,py=45,drag=null;
 function valid(g){if(!g||g.version!==VERSION||!Array.isArray(g.nodes)||!Array.isArray(g.edges)||g.nodes.length>80||g.edges.length>160)return false;const ids=new Set();for(const n of g.nodes){if(!n||typeof n.id!=='string'||ids.has(n.id)||!TYPES[n.type]||!Number.isFinite(n.x)||!Number.isFinite(n.y)||typeof n.label!=='string'||typeof n.config!=='string'||n.label.length>100||n.config.length>2000)return false;ids.add(n.id)}return g.edges.every(e=>ids.has(e.from)&&ids.has(e.to)&&e.from!==e.to&&TYPES[g.nodes.find(n=>n.id===e.from).type][1]&&TYPES[g.nodes.find(n=>n.id===e.to).type][0])}
 try{const g=JSON.parse(localStorage.getItem(KEY));if(valid(g))graph=g}catch(_){}
 function say(t){$('status').textContent=t}function save(){try{localStorage.setItem(KEY,JSON.stringify(graph));say('Graph saved locally.')}catch(_){say('Local storage unavailable.')}}function commit(){save();render()}function view(){$('world').style.transform='translate('+px+'px,'+py+'px) scale('+scale+')'}
+function fitView(){
+ const stage=$('stage'),mobile=window.matchMedia('(max-width:850px)').matches;
+ if(mobile){
+  const ordered=executionOrder()||graph.nodes.slice().sort((a,b)=>a.x-b.x||a.y-b.y);
+  ordered.forEach((node,index)=>{node.x=36;node.y=28+index*160});
+  stage.style.height=Math.max(520,ordered.length*160+80)+'px';
+  scale=Math.min(1,(stage.clientWidth-48)/170);px=20;py=18;
+  try{localStorage.setItem(KEY,JSON.stringify(graph))}catch(_){}
+ }else{
+  stage.style.height='';
+  if(!graph.nodes.length){scale=1;px=30;py=30;view();return}
+  const minX=Math.min(...graph.nodes.map(n=>n.x)),minY=Math.min(...graph.nodes.map(n=>n.y));
+  const maxX=Math.max(...graph.nodes.map(n=>n.x+194)),maxY=Math.max(...graph.nodes.map(n=>n.y+112));
+  const width=Math.max(194,maxX-minX),height=Math.max(112,maxY-minY);
+  scale=Math.max(.35,Math.min(1.1,(stage.clientWidth-60)/width,(stage.clientHeight-60)/height));
+  px=30-minX*scale;py=30-minY*scale;
+ }
+ view();
+}
 function connected(a,b){if(a===b||graph.edges.some(e=>e.from===a&&e.to===b))return false;const n=graph.nodes.find(n=>n.id===a),m=graph.nodes.find(n=>n.id===b);if(!n||!m||!TYPES[n.type][1]||!TYPES[m.type][0])return false;const visit=(id,seen=new Set())=>{if(id===a)return true;if(seen.has(id))return false;seen.add(id);return graph.edges.filter(e=>e.from===id).some(e=>visit(e.to,seen))};return !visit(b)}
 function executionOrder(){const byId=new Map(graph.nodes.map(n=>[n.id,n]));const indegree=new Map(graph.nodes.map(n=>[n.id,0]));for(const e of graph.edges)indegree.set(e.to,indegree.get(e.to)+1);const queue=graph.nodes.filter(n=>indegree.get(n.id)===0).map(n=>n.id),ordered=[];while(queue.length){const id=queue.shift();ordered.push(byId.get(id));for(const e of graph.edges.filter(e=>e.from===id)){indegree.set(e.to,indegree.get(e.to)-1);if(indegree.get(e.to)===0)queue.push(e.to)}}return ordered.length===graph.nodes.length?ordered:null}
 function execute(){if(!valid(graph))return say('Invalid graph schema. Reset or correct the graph.');if(!graph.nodes.length)return say('Add nodes before running.');const order=executionOrder();if(!order)return say('Workflow has a cycle and cannot execute.');if(!graph.nodes.some(n=>n.type==='trigger'))return say('Add a trigger node before running.');const failure=order.find(n=>/\b(401|422|429|fail|error)\b/i.test(n.config));const steps=order.map(n=>({id:n.id,label:n.label,type:n.type,status:failure?(n.id===failure.id?'Failed':order.indexOf(n)>order.indexOf(failure)?'Skipped':'Completed'):'Completed'}));const result={schema:1,id:'ED-'+Date.now().toString(36),at:new Date().toISOString(),status:failure?'Failed':'Completed',failure:failure?{id:failure.id,label:failure.label,code:(failure.config.match(/401|422|429/)||[])[0]||'error'}:null,steps:steps.slice(0,80)};try{sessionStorage.setItem('synes-editor-handoff-v1',JSON.stringify(result));say('Synthetic '+result.status.toLowerCase()+' execution saved. Opening linked Monitoring…');if(window.parent!==window){window.parent.postMessage({type:'synes:editor-run',schema:1},location.origin)}else{location.href='./lab.html#monitoring'}}catch(_){say('Session storage unavailable. Execution result could not be handed to Monitoring.')}}
@@ -78,7 +172,7 @@ async function buildFromPrompt(prompt){
   }
   say('Built '+steps.length+' steps and '+graph.edges.length+' connections.');
   chatMessage('Completed: '+steps.map(s=>s.label).join(' → ')+'.');
- }finally{building=false;$('chat-send').disabled=false}
+ }finally{if(window.matchMedia('(max-width:850px)').matches){fitView();render()}building=false;$('chat-send').disabled=false}
 }
 $('chat-form').addEventListener('submit',e=>{e.preventDefault();const field=$('chat-input'),prompt=field.value.trim();if(!prompt||building)return;chatMessage(prompt,'user');field.value='';void buildFromPrompt(prompt)});
 function render(){const root=$('nodes');root.innerHTML='';for(const n of graph.nodes){const el=document.createElement('div');el.className='node'+(selected===n.id?' selected':'');el.style.left=n.x+'px';el.style.top=n.y+'px';el.dataset.id=n.id;el.tabIndex=0;el.setAttribute('aria-label',n.label+' '+n.type+' node');el.innerHTML='<div class="title">'+esc(n.label)+'</div><small>'+esc(n.type)+'</small>'+(TYPES[n.type][0]?'<button class="port in" data-port="in" aria-label="Input of '+esc(n.label)+'">◀</button>':'')+(TYPES[n.type][1]?'<button class="port out" data-port="out" aria-label="Output of '+esc(n.label)+'">▶</button>':'');root.append(el)}draw();const n=graph.nodes.find(n=>n.id===selected);$('inspector').innerHTML=n?'<label for="label">Label</label><input id="label" maxlength="100" value="'+esc(n.label)+'"><label for="config">Configuration</label><input id="config" maxlength="2000" value="'+esc(n.config)+'"><p>'+esc(n.type)+' · '+esc(n.id)+'</p><button id="remove">Delete node</button>':'Select a node to configure it.';if(n){$('label').onchange=e=>{n.label=e.target.value||n.type;commit()};$('config').onchange=e=>{n.config=e.target.value;commit()};$('remove').onclick=()=>remove(n.id)}view()}
@@ -90,6 +184,6 @@ $('nodes').onpointerdown=e=>{if(e.target.closest('.port')){const port=e.target.c
 $('stage').onpointerdown=e=>{if(e.target.closest('.node'))return;drag={type:'pan',x:e.clientX,y:e.clientY,ox:px,oy:py};$('stage').setPointerCapture(e.pointerId)};
 document.onpointermove=e=>{if(!drag)return;if(drag.type==='wire'){return}if(drag.type==='pan'){px=drag.ox+e.clientX-drag.x;py=drag.oy+e.clientY-drag.y;view()}else{const n=graph.nodes.find(n=>n.id===drag.id);if(!n)return;n.x=Math.max(0,Math.round(drag.ox+(e.clientX-drag.x)/scale));n.y=Math.max(0,Math.round(drag.oy+(e.clientY-drag.y)/scale));const el=$('nodes').querySelector('[data-id="'+n.id+'"]');el.style.left=n.x+'px';el.style.top=n.y+'px';draw()}};
 document.onpointerup=e=>{if(drag?.type==='wire'){const targets=document.elementsFromPoint(e.clientX,e.clientY),target=targets.find(x=>x.matches?.('.port.in'));const id=target?.closest('.node')?.dataset.id;if(id&&connected(drag.id,id)){graph.edges.push({from:drag.id,to:id});commit();say('Nodes connected.')}else if(id){say('Connection rejected: duplicate, invalid port or cycle.')}else{say('Output ready. Tap a target input port to finish connecting.')}if(id)from='';}else if(drag?.type==='node')commit();drag=null};document.onpointercancel=()=>{if(drag?.type==='node')commit();drag=null};
-$('stage').addEventListener('wheel',e=>{e.preventDefault();scale=Math.max(.3,Math.min(1.8,scale+(e.deltaY<0?.1:-.1)));view()},{passive:false});$('plus').onclick=()=>{scale=Math.min(1.8,scale+.1);view()};$('minus').onclick=()=>{scale=Math.max(.3,scale-.1);view()};$('fit').onclick=()=>{scale=.8;px=30;py=45;view()};$('execute').onclick=execute;$('save').onclick=save;$('reset').onclick=()=>{if(confirm('Restore starter graph?')){graph=seed();selected='';commit()}};$('unlink').onclick=()=>{if(!edge)return say('Select a connection first');graph.edges=graph.edges.filter(e=>e.from+'|'+e.to!==edge);edge='';commit()};
-document.onkeydown=e=>{if(e.key==='Escape'){from='';edge='';say('Cancelled')}if(e.target.matches('input,textarea'))return;const n=graph.nodes.find(n=>n.id===selected);if(!n)return;if(e.key==='Delete'||e.key==='Backspace'){e.preventDefault();remove(n.id)}if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.key)){e.preventDefault();n.x=Math.max(0,n.x+(e.key==='ArrowRight'?10:e.key==='ArrowLeft'?-10:0));n.y=Math.max(0,n.y+(e.key==='ArrowDown'?10:e.key==='ArrowUp'?-10:0));commit()}};render()})();
+$('stage').addEventListener('wheel',e=>{e.preventDefault();scale=Math.max(.3,Math.min(1.8,scale+(e.deltaY<0?.1:-.1)));view()},{passive:false});$('plus').onclick=()=>{scale=Math.min(1.8,scale+.1);view()};$('minus').onclick=()=>{scale=Math.max(.3,scale-.1);view()};$('fit').onclick=()=>{fitView();render()};$('execute').onclick=execute;$('save').onclick=save;$('reset').onclick=()=>{if(confirm('Restore starter graph?')){graph=seed();selected='';commit()}};$('unlink').onclick=()=>{if(!edge)return say('Select a connection first');graph.edges=graph.edges.filter(e=>e.from+'|'+e.to!==edge);edge='';commit()};
+document.onkeydown=e=>{if(e.key==='Escape'){from='';edge='';say('Cancelled')}if(e.target.matches('input,textarea'))return;const n=graph.nodes.find(n=>n.id===selected);if(!n)return;if(e.key==='Delete'||e.key==='Backspace'){e.preventDefault();remove(n.id)}if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.key)){e.preventDefault();n.x=Math.max(0,n.x+(e.key==='ArrowRight'?10:e.key==='ArrowLeft'?-10:0));n.y=Math.max(0,n.y+(e.key==='ArrowDown'?10:e.key==='ArrowUp'?-10:0));commit()}};render();fitView();render()})();
 </script></body></html>
