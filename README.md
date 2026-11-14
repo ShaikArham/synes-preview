@@ -8,7 +8,7 @@
 
 ![Status](https://img.shields.io/badge/Project-Independent%20demo-7353ba?style=flat-square) ![Scenarios](https://img.shields.io/badge/Data-Synthetic-334155?style=flat-square) ![Review](https://img.shields.io/badge/Actions-Human%20review-075d60?style=flat-square)
 
-[**Project source**](https://github.com/ShaikArham/synes) · [**Public demo**](https://synes-dublin.vercel.app) · [**Portfolio**](https://arham-bi.vercel.app/)
+[**Public preview repository**](https://github.com/ShaikArham/synes-preview) · [**Public demo**](https://synes-dublin.vercel.app) · [**Portfolio**](https://arham-bi.vercel.app/)
 
 *Shaik Arham Saquib · Dublin, Ireland*
 
